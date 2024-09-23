@@ -127,12 +127,18 @@ function addBook() {
 displayBooks();
 
 let themeIcon = document.querySelector(".theme-icon");
-let body = document.querySelector("body");
+let body = document.documentElement;
+let siteLogo = document.querySelector(".header>a>span>svg");
+// console.log(siteLogo);
+body.className = "dark";
 
 themeIcon.addEventListener("click", () => {
     let curTheme = body.className;
     let iconType = document.querySelector(".theme-mode");
     let iconName = iconType.textContent;
-    body.className = curTheme === "dark-theme" ? "light-theme" : "dark-theme";
+    let siteLogoClass = siteLogo.className;
+    // console.log(siteLogoClass);
+    siteLogo.className.baseVal = siteLogoClass.baseVal === "invert" ? "" : "invert";
+    body.className = curTheme === "dark" ? "light" : "dark";
     iconType.textContent = iconName === "light_mode" ? "dark_mode" : "light_mode";
 })

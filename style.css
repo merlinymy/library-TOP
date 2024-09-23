@@ -4,45 +4,40 @@
     list-style: none;
 }
 
-/* Define color variables for light and dark themes */
 :root {
+    --font-size-nav: 1.2rem;
+    --transparency: 0.4;
+    --transparency2: 0.65;
+    --transparency3: 0.35;
+    --transparency4: 0.85;
+    --color-rainbow: linear-gradient(45deg in lch, rgba(255, 0, 0, var(--transparency)), rgba(255, 165, var(--transparency)), rgba(248, 248, 26, var(--transparency)), rgba(0, 128, 0, var(--transparency)), rgba(173, 216, 230, var(--transparency)), rgba(0, 0, 255, var(--transparency)), rgba(128, 0, 128, var(--transparency)));
+}
+
+:root.light {
     /* Light Mode Colors */
-    --color-text-light: #000000;             /* Black text */
-    --color-background-light: #FFFFFF;       /* White background */
-    --color-nav-background-light: #F8F9FA;   /* Light grey nav background */
-    --color-footer-background-light: #F1F3F5;/* Slightly darker grey footer background */
-    --color-main-background-light: #FFFFFF;  /* White main background */
-    --color-card-background-light: #FFFFFF;  /* White card background */
-
-    /* Dark Mode Colors */
-    --color-text-dark: #FFFFFF;              /* White text */
-    --color-input-dark: #424242;
-    --color-background-dark: #121212;        /* Dark background */
-    --color-nav-background-dark: #272727;    /* Darker nav background */
-    --color-footer-background-dark: #1A1A1A; /* Darker footer background */
-    --color-main-background-dark: #1e1e1e;   /* Dark main background */
-    --color-card-background-dark: #1E1E1E;   /* Dark card background */
+    --color-text: #000000;             /* Black text */
+    --color-background: #FFFFFF;   
+    --color-input: #d3d3d3; /* White background */
+    --color-nav-background: #F8F9FA;   /* Light grey nav background */
+    --color-footer-background: #F1F3F5;/* Slightly darker grey footer background */
+    --color-main-background: #FFFFFF;  /* White main background */
+    --color-card-background: #FFFFFF;  /* White card background */
+    --color-func-header-row-2:#ffbf00;
 }
 
-/* Light Theme */
-.light-theme {
-    --color-text: var(--color-text-light);
-    --color-background: var(--color-background-light);
-    --color-nav-background: var(--color-nav-background-light);
-    --color-footer-background: var(--color-footer-background-light);
-    --color-main-background: var(--color-main-background-light);
-    --color-card-background: var(--color-card-background-light);
+:root.dark {
+       /* Dark Mode Colors */
+       --color-text: #FFFFFF;              /* White text */
+       --color-input: #424242;
+       --color-background: #121212;        /* Dark background */
+       --color-nav-background: #272727;    /* Darker nav background */
+       --color-footer-background: #1A1A1A; /* Darker footer background */
+       --color-main-background: #1e1e1e;   /* Dark main background */
+       --color-card-background: #1E1E1E;   /* Dark card background */
+       --color-func-header-row-2:#45475c;
 }
 
-/* Dark Theme */
-.dark-theme {
-    --color-text: var(--color-text-dark);
-    --color-background: var(--color-background-dark);
-    --color-nav-background: var(--color-nav-background-dark);
-    --color-footer-background: var(--color-footer-background-dark);
-    --color-main-background: var(--color-main-background-dark);
-    --color-card-background: var(--color-card-background-dark);
-}
+
 
 input, button {
     all: unset;
@@ -53,8 +48,14 @@ button {
     align-items: center;
 }
 
-button, img, span[class*="material"] {
+button, img, span[class*="material"], li {
     cursor: pointer;
+}
+
+li:hover {
+    background: rgb(255, 8, 0);
+    background-clip: text;
+    color: transparent;
 }
 
 body {
@@ -64,14 +65,14 @@ body {
 
 .container {
     height: 100vh;
-    display: grid;
-    grid-template-areas: 
-    'head head head'
-    'top top top'
-    'main main right'
-    'main main right';
+    display: flex;
+    flex-direction: column;
     margin: 1rem 15rem;
     background-color: var(--color-main-background);
+}
+
+.content {
+    display: flex;
 }
 
 a:link {
@@ -88,15 +89,32 @@ a:link {
     padding: 0.75rem;
 }
 
+.site-brand, .site-brand span {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.invert{
+    filter: invert(1);
+}
+
 .func-header div,ul {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
+.nav-header > li {
+    padding: 0.25rem 1rem;
+    font-size: var(--font-size-nav);
+}
+
 .form-wrapper {
-    border-radius: 15px;
-    background-color: var(--color-input-dark);
+    border-radius: 5px;
+    background-color: var(--color-input);
     padding: 0.15rem 0.5rem;
     gap: 10rem;
 }
@@ -105,16 +123,28 @@ a:link {
     gap: 1rem;
 }
 
+.func-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
 .func-header-row-1 {
-    border: 3px solid green;
+    flex: 1;
     gap: 3rem;
+}
+
+.func-header-row-2 {
+    flex: 1;
+    border-radius: 5px;
+    background-color: var(--color-func-header-row-2);
 }
 
 .user-profile-pic {
     border: 1px solid black;
-    height: 36px;
-    width: 36px;
-    min-width: 36px;
+    height: 30px;
+    width: 30px;
+    min-width: 30px;
     border-radius: 50px;
 }
 
@@ -123,7 +153,7 @@ a:link {
 }
 
 .main {
-    grid-area: main;
+    flex: 2 1 auto;
     background-color: var(--color-main-background);
     display: grid;
     margin: 0rem 1.75rem;
@@ -138,7 +168,7 @@ a:link {
 }
 
 .right-side-bar {
-    grid-area: right;
+    flex: 1 1 auto;
 }
 
 .footer {
