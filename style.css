@@ -1,0 +1,147 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+/* Define color variables for light and dark themes */
+:root {
+    /* Light Mode Colors */
+    --color-text-light: #000000;             /* Black text */
+    --color-background-light: #FFFFFF;       /* White background */
+    --color-nav-background-light: #F8F9FA;   /* Light grey nav background */
+    --color-footer-background-light: #F1F3F5;/* Slightly darker grey footer background */
+    --color-main-background-light: #FFFFFF;  /* White main background */
+    --color-card-background-light: #FFFFFF;  /* White card background */
+
+    /* Dark Mode Colors */
+    --color-text-dark: #FFFFFF;              /* White text */
+    --color-input-dark: #424242;
+    --color-background-dark: #121212;        /* Dark background */
+    --color-nav-background-dark: #272727;    /* Darker nav background */
+    --color-footer-background-dark: #1A1A1A; /* Darker footer background */
+    --color-main-background-dark: #1e1e1e;   /* Dark main background */
+    --color-card-background-dark: #1E1E1E;   /* Dark card background */
+}
+
+/* Light Theme */
+.light-theme {
+    --color-text: var(--color-text-light);
+    --color-background: var(--color-background-light);
+    --color-nav-background: var(--color-nav-background-light);
+    --color-footer-background: var(--color-footer-background-light);
+    --color-main-background: var(--color-main-background-light);
+    --color-card-background: var(--color-card-background-light);
+}
+
+/* Dark Theme */
+.dark-theme {
+    --color-text: var(--color-text-dark);
+    --color-background: var(--color-background-dark);
+    --color-nav-background: var(--color-nav-background-dark);
+    --color-footer-background: var(--color-footer-background-dark);
+    --color-main-background: var(--color-main-background-dark);
+    --color-card-background: var(--color-card-background-dark);
+}
+
+input, button {
+    all: unset;
+}
+
+button {
+    display: flex;
+    align-items: center;
+}
+
+button, img, span[class^="material"] {
+    cursor: pointer;
+}
+
+body {
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+.container {
+    height: 100vh;
+    display: grid;
+    grid-template-areas: 
+    'head head head'
+    'top top top'
+    'main main right'
+    'main main right';
+    margin: 1rem 15rem;
+    background-color: var(--color-main-background);
+}
+
+a:link {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.header {
+    grid-area: head;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-nav-background);
+    max-height: fit-content;
+    padding: 0.75rem;
+}
+
+.func-header div,ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrapper {
+    border-radius: 15px;
+    background-color: var(--color-input-dark);
+    padding: 0.15rem 0.5rem;
+    gap: 10rem;
+}
+
+.profile {
+    gap: 1rem;
+}
+
+.func-header-row-1 {
+    border: 3px solid green;
+    gap: 3rem;
+}
+
+.user-profile-pic {
+    border: 1px solid black;
+    height: 36px;
+    width: 36px;
+    min-width: 36px;
+    border-radius: 50px;
+}
+
+.top-week {
+    grid-area: top;
+}
+
+.main {
+    grid-area: main;
+    background-color: var(--color-main-background);
+    display: grid;
+    margin: 0rem 1.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+    gap: 1rem;
+}
+
+.book-card {
+    padding: 0.75rem;
+    display: flex;
+    background-color: var(--color-card-background);
+}
+
+.right-side-bar {
+    grid-area: right;
+}
+
+.footer {
+    background-color: var(--color-footer-background);
+    margin-top: auto;
+}
