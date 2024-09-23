@@ -61,7 +61,7 @@ let leftScrollBtn = document.querySelector(".left-scroll");
 let rightScrollBtn = document.querySelector(".right-scroll");
 let scrollBar = document.querySelector(".scroll-bar-wrap");
 let x = 0;
-let readingBook;
+// let readingBook;
 
 let classToPropertyMap = {
     "title": "title",
@@ -75,7 +75,7 @@ let classToPropertyMap = {
 };
 
 function displayBooks() {
-    displayReadingBooks()
+    displayReadingBooks();
     bookArr.forEach((book) => {
         main.appendChild(fillBookCard(book));
     });
@@ -103,8 +103,9 @@ function generateScrollBook() {
     actionDiv.classList.add("actions");
     actionDiv.innerHTML = `<span class="status-toggle material-symbols-outlined" title='toggle read status'>auto_stories</span>
                             <span class="delete-book material-symbols-outlined" title="remove book">delete</span>`;
-    
-    infoDiv.append(pageLeft, actionDiv);
+    let bookName = document.createElement("p");
+    bookName.setAttribute("style", "display: none");
+    infoDiv.append(pageLeft, actionDiv, bookName);
     bookDiv.append(bookCover, infoDiv);
     return bookDiv;
 }
@@ -115,17 +116,19 @@ function fillScrollBook(book) {
     // console.log(bookDiv.childNodes[0]);
 
     bookDiv.childNodes[1].childNodes[0].textContent = 
-    `${book.pageLeft} pages left`
+    `${book.pageLeft} pages left`;
+
+    bookDiv.childNodes[1].childNodes[2].textContent = book.title;
 
     return bookDiv;
 }
 
 function displayReadingBooks() {
     let readingBooks = bookArr.filter(book => {
+        // console.log(book);
         return book.status === "Reading";
     });
-    readingBook = readingBooks;
-    console.log(readingBook);
+
     readingBooks.forEach(book => {
         scrollBarWrap.append(fillScrollBook(book));
     });
@@ -231,10 +234,40 @@ addNewBook.addEventListener("click", () => {
     addBookDialog.showModal();
 });
 
-let readStatusToggle = document.querySelectorAll('.status-toggle');
-readStatusToggle.forEach(toggle => {toggle.addEventListener('click', () => {
-    let symbol = toggle.textContent;
-    console.log(symbol);
-    toggle.textContent = symbol == 'auto_stories' ? 'check_circle' : 'auto_stories';
+function setStatusToggle() {
+    let readStatusToggle = document.querySelectorAll('.status-toggle');
+    readStatusToggle.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+        console.log('status toggled');
+        let symbol = toggle.textContent;
+        let bookName = toggle.parentElement.parentElement.childNodes[2].textContent;
+        // console.log(toggleParent);
+        // find the book from reading array
+        updateBook(bookName, 'Completed');
+        // console.log(symbol);
+        toggle.textContent = symbol == 'auto_stories' ? 'check_circle' : 'auto_stories';
+    })});
+}
 
-})});
+
+function updateBook(title, status) {
+    // TODO: use book id instead of name (potential duplicates)
+    let book = bookArr.filter(book => {
+        return book.title === title;
+    })[0];
+
+    if (status === 'Completed') {
+        book.status = 'Completed';
+    } else if (status === 'Reading') {
+        book.status = 'Reading';
+    } else {
+        book.status = 'Dropped';
+    }
+
+    scrollBarWrap.innerHTML = '';
+    main.innerHTML = '';
+    displayBooks();
+    setStatusToggle();
+}
+
+setStatusToggle();
