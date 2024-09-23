@@ -53,7 +53,7 @@ button {
     align-items: center;
 }
 
-button, img, span[class^="material"] {
+button, img, span[class*="material"] {
     cursor: pointer;
 }
 

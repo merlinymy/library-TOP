@@ -125,3 +125,14 @@ function addBook() {
 }
 
 displayBooks();
+
+let themeIcon = document.querySelector(".theme-icon");
+let body = document.querySelector("body");
+
+themeIcon.addEventListener("click", () => {
+    let curTheme = body.className;
+    let iconType = document.querySelector(".theme-mode");
+    let iconName = iconType.textContent;
+    body.className = curTheme === "dark-theme" ? "light-theme" : "dark-theme";
+    iconType.textContent = iconName === "light_mode" ? "dark_mode" : "light_mode";
+})
