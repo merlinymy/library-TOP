@@ -149,7 +149,69 @@ a:link {
 }
 
 .top-week {
-    grid-area: top;
+    border-top: 3px solid gold;
+}
+
+.auto-scroll-bar {
+    overflow: hidden;
+}
+
+.scroll-bar-wrap {
+    --offset: calc(100px -300px);
+    display: flex;
+    /* overflow: hidden; */
+    padding-left: 30px;
+    justify-content: flex-start;
+    gap: 50px;
+    transform: translate3d(var(--offset), 0px, 0px);
+    transition: 1000ms;
+}
+
+
+.scroll-buttons {
+    position: absolute;
+    top: 190px;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+
+.right-scroll {
+    opacity: 0.35;
+    position: absolute;
+    left: calc(100vw - 522px);
+    transition: all 300ms;
+    cursor: pointer;
+}
+
+.left-scroll {
+    transition: all 300ms;
+    cursor: pointer;
+    opacity: 0.35;
+}
+
+.right-scroll:hover, .left-scroll:hover {
+    opacity: 1;
+    transition: all 300ms;
+}
+
+.scroll-buttons>div {
+    background: #424242;
+    width: fit-content;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-week>h2 {
+    background-color: gold;
+    display: inline-block;
+    padding: 0.15rem 1rem;
+}
+
+.top-week img {
+    width: 150px ;
 }
 
 .main {

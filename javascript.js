@@ -142,3 +142,30 @@ themeIcon.addEventListener("click", () => {
     body.className = curTheme === "dark" ? "light" : "dark";
     iconType.textContent = iconName === "light_mode" ? "dark_mode" : "light_mode";
 })
+
+let leftScrollBtn = document.querySelector(".left-scroll");
+let rightScrollBtn = document.querySelector(".right-scroll");
+let scrollBar = document.querySelector(".scroll-bar-wrap");
+let x = 0;
+let curPos = 0;
+
+leftScrollBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    x--;
+    if (x < 0) {
+        x = 8;
+    }
+    scrollBar.style.setProperty('--offset',`calc(-200px * ${x})`);
+    console.log(scrollBar.style);
+
+})
+
+rightScrollBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    x++;
+    if (x > 8) {
+        x = 0;
+    }
+    scrollBar.style.setProperty('--offset',`calc(-200px * ${x})`);
+})
+
