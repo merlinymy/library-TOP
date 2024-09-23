@@ -50,15 +50,14 @@
                 </div>
                 <div class="func-header-row-2">
                     <ul class="nav-header">
-                        <li>All Books</li>
-                        <li>Latest Books</li>
-                        <li>Hot Books</li>
+                        <li>My Books</li>
+                        <li class="add-new-book">Add New Book</li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="top-week">
-            <h2>Popular Books This Month</h2>
+            <h2>Keep Reading</h2>
             <div class="auto-scroll-bar">
                 <div class="scroll-bar-wrap">
                     <div class="book">
@@ -160,9 +159,12 @@
                 </div>
             </div>
         </div>
-        <div class="content">
-            
+        <div class="content">           
             <div class="main">
+                <h2>All Books</h2>
+                <div class="latest-updates">
+
+                </div>
                 <!-- <div class="book-card">
                     <p class="title"></p>
                     <p class="author"></p>
@@ -172,18 +174,19 @@
                     <img src="" alt="" class="book-cover">
                 </div> -->
             </div>
-            <div class="right-side-bar">
-                <div class="popular-books">
-                    <h2>Popular Books</h2>
-                </div>
-                <div class="new-books">
-                    <h2>New Books</h2>
-                </div>
-                <div class="by-genres">
-                    <h2>By Genres</h2>
-                </div>
-            </div>
         </div>
+        
+        <dialog class="add-book">
+            <form method="dialog">
+                <h2>Add A New Book:</h2>
+                <label for="book-name">Book Name</label>
+                <input type="text" name="book-name" id="book-name">
+                <label for="book-author">author</label>
+                <input type="text" name="author" id="book-author">
+                <label for="genre">Genres</label>
+                <input type="text" name="genre" id="genre">
+            </form>    
+        </dialog>
         <div class="footer">Copyright <span>&copy;</span> Merlin Yang</div>
     </div>
 </body>

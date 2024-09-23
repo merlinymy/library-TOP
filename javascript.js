@@ -4,7 +4,7 @@ const book1 = {
     status: "Completed",
     dateStart: "2023-01-10",
     dateFin: "2023-02-15",
-    coverImg: "https://example.com/images/journey-of-programming.jpg"
+    coverImg: "https://images.isbndb.com/covers/04/86/9781781100486.jpg"
   };
   
   const book2 = {
@@ -13,7 +13,7 @@ const book1 = {
     status: "Reading",
     dateStart: "2023-03-01",
     dateFin: null,
-    coverImg: "https://example.com/images/understanding-databases.jpg"
+    coverImg: "https://images.isbndb.com/covers/04/86/9781781100486.jpg"
   };
   
   const book3 = {
@@ -22,7 +22,7 @@ const book1 = {
     status: "Plan to Read",
     dateStart: null,
     dateFin: null,
-    coverImg: "https://example.com/images/future-of-ai.jpg"
+    coverImg: "https://images.isbndb.com/covers/04/86/9781781100486.jpg"
   };
   
   const book4 = {
@@ -31,7 +31,7 @@ const book1 = {
     status: "Completed",
     dateStart: "2023-04-20",
     dateFin: "2023-05-05",
-    coverImg: "https://example.com/images/mastering-css-variables.jpg"
+    coverImg: "https://images.isbndb.com/covers/04/86/9781781100486.jpg"
   };
   
   const book5 = {
@@ -40,12 +40,12 @@ const book1 = {
     status: "Dropped",
     dateStart: "2023-02-01",
     dateFin: "2023-02-15",
-    coverImg: "https://example.com/images/intro-to-ml.jpg"
+    coverImg: "https://images.isbndb.com/covers/04/86/9781781100486.jpg"
   };
 
 let bookArr = [book1, book2, book3, book4, book5];
 
-let main = document.querySelector(".main");
+let main = document.querySelector(".latest-updates");
 
 let classToPropertyMap = {
     "title": "title",
@@ -98,7 +98,7 @@ function generateCard() { //returns the empty bookCard div
     coverImg.setAttribute("src", "");
 
     textInfo.append(title, author, status, dateStart, dateFin);
-    bookCard.append(textInfo, coverImg);
+    bookCard.append(coverImg, textInfo);
 
     return bookCard;
 }
@@ -169,3 +169,8 @@ rightScrollBtn.addEventListener("click", (event) => {
     scrollBar.style.setProperty('--offset',`calc(-200px * ${x})`);
 })
 
+let addNewBook = document.querySelector('.add-new-book');
+let addBookDialog = document.querySelector('.add-book');
+addNewBook.addEventListener("click", () => {
+    addBookDialog.showModal();
+})
