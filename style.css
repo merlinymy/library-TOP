@@ -27,7 +27,7 @@
 
 :root.dark {
        /* Dark Mode Colors */
-       --color-text: #FFFFFF;              /* White text */
+       --color-text: #e1e1e1;              /* White text */
        --color-input: #424242;
        --color-background: #121212;        /* Dark background */
        --color-nav-background: #272727;    /* Darker nav background */
@@ -159,9 +159,7 @@ a:link {
 }
 
 .scroll-bar-wrap {
-    --offset: calc(100px -300px);
     display: flex;
-    /* overflow: hidden; */
     padding-left: 30px;
     justify-content: flex-start;
     gap: 50px;
@@ -210,7 +208,7 @@ a:link {
     padding: 0.25rem 0rem;
     background: var(--color-card-background);
     position: absolute;
-    top: 357px;
+    top: 67%;
     width: 150px;
     opacity: 0;
     z-index: -1;
@@ -225,11 +223,15 @@ a:link {
     align-self: flex-end;
 }
 
+.book {
+    position:relative;
+}
+
 .book:hover .book-info {
-    z-index: 1;
+    z-index: 3;
     opacity: 0.8;
     transition: all 300ms;
-    top: 327px;
+    /* top: 327px; */
 }
 
 .actions>span {
