@@ -256,6 +256,10 @@ a:link {
     width: 150px ;
 }
 
+.status-toggle {
+    margin-right: 0.25rem;
+}
+
 .main {
     flex: 2 1 auto;
     border-radius: 3px 0px 0px 0px;
@@ -289,7 +293,7 @@ a:link {
 }
 
 .book-cover {
-    width: 40%;
+    width: 30%;
     object-fit: contain;
     flex: 1;
 }
@@ -297,9 +301,31 @@ a:link {
 .text-info {
     flex: 2;
     display: flex;
-    gap: 0.75rem;
+    gap: 0.25rem;
     flex-direction: column;
     align-items: flex-end;
+}
+
+.title {
+    font-size: 1.3rem;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    transition: all 500ms;
+}
+
+.author {
+    font-size: 1.2rem;
+    font-style: italic;
+    transition: all 500ms;
+}
+
+.book-card:hover .title, .book-card:hover .author {
+    font-size: 1rem;
+    transition: all 500ms;
+}
+
+.author::before {
+    content: "by  ";
+    font-style: normal;
 }
 
 .text-info > .interact-icon {
@@ -340,6 +366,17 @@ a:link {
 
 .summary {
     opacity: 0;
+    /* padding: 0.75rem 0.2rem; */
+    font-size: 0.2rem;
+    transition: all 500ms;
+}
+
+
+.book-card:hover .summary {
+    opacity: 1;
+    font-size: 80%;
+    transition: all 500ms;
+    letter-spacing: 1.25px;
 }
 
 .book-card:hover .material-symbols-outlined:not(.highlight) {

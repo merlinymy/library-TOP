@@ -25,7 +25,7 @@ function initBookArr(books) {
         248,
         134,
         "https://covers.openlibrary.org/b/isbn/9781250169440-L.jpg",
-        "In the summer of 1983, on the Italian Riviera, a romantic bond forms between a 17-year-old boy and a visiting scholar. Their relationship unfolds amidst sun-drenched days and intellectual pursuits. As the summer ends, they grapple with the intensity of their feelings..."
+        "A summer romance unfolds between a 17-year-old boy and a visiting scholar in Italy. As their bond deepens, they grapple with desire and the fleeting nature of time..."
     ));
 
     books.push(new Book(
@@ -37,7 +37,7 @@ function initBookArr(books) {
         421,
         421,
         "https://covers.openlibrary.org/b/isbn/9781250316776-L.jpg",
-        "When America's First Son falls in love with the Prince of Wales, their secret relationship could derail both nations. Amid political intrigue and media scrutiny, they navigate the challenges of love in the public eye. Their story unfolds with humor, heart, and hope..."
+        "America's First Son and the Prince of Wales fall in love, risking political scandal. Amidst media scrutiny, they navigate a secret relationship that could change nations..."
     ));
 
     books.push(new Book(
@@ -49,7 +49,7 @@ function initBookArr(books) {
         416,
         216,
         "https://covers.openlibrary.org/b/isbn/9780062060624-L.jpg",
-        "A retelling of the epic tale of Achilles and Patroclus during the Trojan War. The novel explores their deep friendship and the challenges they face amidst war and prophecy. As destiny unfolds, their bond is tested in profound ways..."
+        "A retelling of the bond between Achilles and Patroclus during the Trojan War. Their friendship and love are tested by fate and prophecy..."
     ));
 
     books.push(new Book(
@@ -61,7 +61,7 @@ function initBookArr(books) {
         359,
         0,
         "https://covers.openlibrary.org/b/isbn/9781442408937-L.jpg",
-        "Two teenage boys, Aristotle and Dante, form an unlikely friendship that changes their lives. Through their journey, they confront issues of identity, family, and love. Together, they discover the truths of the universe and themselves..."
+        "Two teens form an unexpected friendship that changes their lives. Together, they explore identity, family, and the mysteries of the universe..."
     ));
 
     books.push(new Book(
@@ -73,7 +73,7 @@ function initBookArr(books) {
         169,
         69,
         "https://covers.openlibrary.org/b/isbn/9780141186351-L.jpg",
-        "Set in 1950s Paris, an American man grapples with his sexuality and relationships. He becomes involved with an Italian bartender named Giovanni. The novel delves into themes of love, identity, and societal expectations..."
+        "An American in Paris grapples with his sexuality and love for an Italian bartender. The story delves into identity and societal expectations..."
     ));
 
     books.push(new Book(
@@ -85,7 +85,7 @@ function initBookArr(books) {
         333,
         300,
         "https://covers.openlibrary.org/b/isbn/9780156701600-L.jpg",
-        "Orlando, a young nobleman in Elizabethan England, mysteriously transforms into a woman and lives for centuries. The story explores gender, identity, and societal roles across time. Woolf's novel is a whimsical journey through history and self-discovery..."
+        "Orlando, a nobleman who transforms into a woman, lives across centuries. The novel explores gender, identity, and societal roles..."
     ));
 
     books.push(new Book(
@@ -97,7 +97,7 @@ function initBookArr(books) {
         292,
         22,
         "https://covers.openlibrary.org/b/isbn/9780486800295-L.jpg",
-        "In 1950s New York, a young sales clerk, Therese, becomes infatuated with an elegant older woman, Carol. Their forbidden romance challenges societal norms and leads them on a cross-country journey. Facing obstacles and scrutiny, they must decide the price they're willing to pay for love..."
+        "A young woman falls for an elegant older woman in 1950s New York. Their forbidden romance challenges societal norms..."
     ));
 
     books.push(new Book(
@@ -109,7 +109,7 @@ function initBookArr(books) {
         470,
         470,
         "https://covers.openlibrary.org/b/isbn/9780062020574-L.jpg",
-        "After her parents' death, Cameron Post is sent to live with her conservative aunt in Montana. When her sexuality is discovered, she is sent to a conversion therapy camp. The novel follows her journey of self-acceptance and resilience..."
+        "Cameron Post is sent to a conversion therapy camp after her sexuality is discovered. She embarks on a journey of self-acceptance and resilience..."
     ));
 
     books.push(new Book(
@@ -121,7 +121,7 @@ function initBookArr(books) {
         303,
         0,
         "https://covers.openlibrary.org/b/isbn/9780062348678-L.jpg",
-        "Sixteen-year-old Simon Spier is trying to keep his sexuality a secret while corresponding with an anonymous classmate online. When his emails fall into the wrong hands, he's blackmailed into playing wingman for his classmate. Simon must find a way to step out of his comfort zone without losing his friends or his chance at happiness..."
+        "Sixteen-year-old Simon is blackmailed over his secret emails with an anonymous boy. He must navigate friendship, love, and coming out..."
     ));
 
     books.push(new Book(
@@ -133,7 +133,7 @@ function initBookArr(books) {
         232,
         0,
         "https://covers.openlibrary.org/b/isbn/9780618871711-L.jpg",
-        "A graphic memoir exploring Alison Bechdel's complex relationship with her father. Through themes of family, identity, and sexuality, she uncovers secrets and truths about her upbringing. The narrative weaves together past and present in a poignant reflection..."
+        "A graphic memoir exploring Alison Bechdel's relationship with her father. Through family secrets, she delves into identity and self-discovery..."
     ));
 
     books.push(new Book(
@@ -145,7 +145,7 @@ function initBookArr(books) {
         256,
         256,
         "https://covers.openlibrary.org/b/isbn/9780393310320-L.jpg",
-        "Set in early 20th-century England, Maurice Hall struggles with his sexuality in a repressive society. He seeks love and acceptance amidst societal expectations and personal turmoil. The novel challenges norms and advocates for authenticity..."
+        "Maurice Hall struggles with his sexuality in early 20th-century England. He seeks love and acceptance against societal pressures..."
     ));
 
     books.push(new Book(
@@ -157,7 +157,7 @@ function initBookArr(books) {
         234,
         0,
         "https://covers.openlibrary.org/b/isbn/9780374400118-L.jpg",
-        "Liza and Annie meet at the Metropolitan Museum of Art and quickly form a deep connection. As their relationship grows, they face challenges from their families and school. Their story is one of first love and the courage to be true to oneself..."
+        "Liza and Annie meet and form a deep connection, facing challenges from society. Their story is one of first love and courage..."
     ));
 
     books.push(new Book(
@@ -169,7 +169,7 @@ function initBookArr(books) {
         185,
         185,
         "https://covers.openlibrary.org/b/isbn/9780375832994-L.jpg",
-        "In a gay-friendly small town, Paul navigates high school life and love. He meets Noah, the boy of his dreams, but complications arise. Amidst friendships and misunderstandings, Paul strives to win Noah's heart..."
+        "In a utopian town, Paul navigates high school and falls for Noah. Amidst misunderstandings, he strives to win Noah's heart..."
     ));
 
     books.push(new Book(
@@ -181,7 +181,7 @@ function initBookArr(books) {
         320,
         320,
         "https://covers.openlibrary.org/b/isbn/9780525552963-L.jpg",
-        "Darius Kellner, a tea-loving teenager, visits Iran for the first time to meet his grandparents. Struggling with depression and feeling out of place, he befriends Sohrab, who helps him connect with his heritage. Their friendship becomes a transformative experience for Darius..."
+        "Darius visits Iran and befriends Sohrab, connecting with his heritage. Their friendship helps him navigate depression and identity..."
     ));
 
     books.push(new Book(
@@ -193,7 +193,7 @@ function initBookArr(books) {
         513,
         0,
         "https://covers.openlibrary.org/b/isbn/9780062382818-L.jpg",
-        "Monty, a young British lord, embarks on a grand tour of Europe with his sister and best friend, Percy. Expecting a year of pleasure, he becomes entangled in a manhunt across the continent. Adventures ensue as Monty confronts danger, his feelings for Percy, and his own identity..."
+        "Monty embarks on a European tour with his friend Percy, leading to adventure and danger. Along the way, he confronts his feelings and identity..."
     ));
 
     books.push(new Book(
@@ -205,7 +205,7 @@ function initBookArr(books) {
         336,
         0,
         "https://covers.openlibrary.org/b/isbn/9780061120084-L.jpg",
-        "In the Deep South during the 1930s, young Scout Finch witnesses racial injustice in her small town. Her father, Atticus Finch, defends a black man accused of a crime he didn't commit. Through her eyes, the novel explores themes of morality, prejudice, and compassion..."
+        "Young Scout Finch witnesses racial injustice in her Southern town. Her father, Atticus, defends a black man wrongly accused..."
     ));
 
     books.push(new Book(
@@ -217,7 +217,7 @@ function initBookArr(books) {
         328,
         150,
         "https://covers.openlibrary.org/b/isbn/9780451524935-L.jpg",
-        "In a dystopian future, Winston Smith lives under the oppressive regime of Big Brother. He begins to question the Party's absolute control over truth and individuality. As he seeks freedom, he becomes entangled in a dangerous rebellion..."
+        "Winston Smith rebels against a totalitarian regime that suppresses truth. As he seeks freedom, he risks everything under Big Brother's watch..."
     ));
 
     books.push(new Book(
@@ -229,7 +229,7 @@ function initBookArr(books) {
         279,
         279,
         "https://covers.openlibrary.org/b/isbn/9780141439518-L.jpg",
-        "Elizabeth Bennet navigates society, family expectations, and misunderstandings with the proud Mr. Darcy. Their initial animosity slowly transforms as they confront their own prejudices. The novel is a witty exploration of love, class, and social norms..."
+        "Elizabeth Bennet navigates love and societal expectations with Mr. Darcy. Misunderstandings give way to a deeper connection..."
     ));
 
     books.push(new Book(
@@ -241,7 +241,7 @@ function initBookArr(books) {
         180,
         0,
         "https://covers.openlibrary.org/b/isbn/9780743273565-L.jpg",
-        "Set in the Roaring Twenties, Nick Carraway becomes entangled in the lavish world of Jay Gatsby. Gatsby's obsession with the elusive Daisy Buchanan leads to tragedy. The novel examines themes of wealth, love, and the American Dream..."
+        "Nick Carraway is drawn into the world of the enigmatic Jay Gatsby. Gatsby's pursuit of Daisy Buchanan leads to tragedy..."
     ));
 
     books.push(new Book(
@@ -253,7 +253,7 @@ function initBookArr(books) {
         277,
         0,
         "https://covers.openlibrary.org/b/isbn/9780316769488-L.jpg",
-        "Teenager Holden Caulfield recounts his experiences in New York City after being expelled from prep school. Disillusioned by adulthood, he searches for authenticity and meaning. His journey is a raw exploration of teenage angst and alienation..."
+        "Holden Caulfield recounts his experiences in New York after leaving prep school. He searches for meaning in a world he finds phony..."
     ));
 
     books.push(new Book(
@@ -265,7 +265,7 @@ function initBookArr(books) {
         635,
         635,
         "https://images.isbndb.com/covers/97/81/9780785839781.jpg",
-        "Captain Ahab obsessively hunts the white whale, Moby Dick, across the seas. Ishmael narrates this epic tale of vengeance and fate. The novel delves into themes of obsession, humanity, and the natural world..."
+        "Captain Ahab obsessively hunts the white whale, Moby Dick. The novel explores themes of obsession and the human condition..."
     ));
 
     books.push(new Book(
@@ -277,7 +277,7 @@ function initBookArr(books) {
         309,
         0,
         "https://covers.openlibrary.org/b/isbn/9780590353427-L.jpg",
-        "Harry Potter discovers he is a wizard on his eleventh birthday and attends Hogwarts School of Witchcraft and Wizardry. He makes friends and uncovers the mystery of the Sorcerer's Stone. The adventure begins as he confronts dark forces in the magical world..."
+        "Harry Potter discovers he's a wizard and attends Hogwarts School. He uncovers a mystery involving the Sorcerer's Stone..."
     ));
 
     books.push(new Book(
@@ -289,7 +289,7 @@ function initBookArr(books) {
         432,
         200,
         "https://covers.openlibrary.org/b/isbn/9780547928210-L.jpg",
-        "Frodo Baggins inherits the One Ring and embarks on a perilous journey to destroy it. Along with the Fellowship, he faces immense dangers to save Middle-earth from darkness. Their quest tests their courage and unity against overwhelming odds..."
+        "Frodo Baggins begins a quest to destroy the One Ring. The Fellowship faces perilous challenges to save Middle-earth..."
     ));
 
     books.push(new Book(
@@ -301,7 +301,7 @@ function initBookArr(books) {
         300,
         0,
         "https://covers.openlibrary.org/b/isbn/9780547928227-L.jpg",
-        "Bilbo Baggins, a hobbit, is recruited by Gandalf and a group of dwarves for an unexpected adventure. They seek to reclaim the dwarves' homeland from the dragon Smaug. Along the way, Bilbo discovers courage and a mysterious ring..."
+        "Bilbo Baggins joins a group of dwarves to reclaim their homeland from a dragon. Along the way, he finds courage and a mysterious ring..."
     ));
 
     books.push(new Book(
@@ -313,7 +313,7 @@ function initBookArr(books) {
         507,
         507,
         "https://covers.openlibrary.org/b/isbn/9780141441146-L.jpg",
-        "Orphaned Jane Eyre becomes a governess at Thornfield Hall, where she meets the enigmatic Mr. Rochester. Secrets and hidden truths test their relationship. Jane's journey is one of self-respect, morality, and love..."
+        "Orphaned Jane Eyre becomes a governess and falls for Mr. Rochester. Secrets at Thornfield Hall test her morality and love..."
     ));
 
     books.push(new Book(
@@ -325,7 +325,7 @@ function initBookArr(books) {
         208,
         0,
         "https://covers.openlibrary.org/b/isbn/9780061122415-L.jpg",
-        "Santiago, a shepherd boy, dreams of finding a hidden treasure in Egypt. His journey becomes a quest for personal legend and spiritual enlightenment. Along the way, he learns valuable lessons about life and destiny..."
+        "Santiago dreams of finding treasure in Egypt and embarks on a journey. Along the way, he learns about life and following one's destiny..."
     ));
 
     books.push(new Book(
@@ -337,7 +337,7 @@ function initBookArr(books) {
         489,
         0,
         "https://covers.openlibrary.org/b/isbn/9780307474278-L.jpg",
-        "Symbologist Robert Langdon becomes embroiled in a mysterious murder at the Louvre. He uncovers a trail of clues linked to Leonardo da Vinci's works. The novel is a fast-paced thriller involving secret societies and hidden histories..."
+        "Robert Langdon investigates a murder linked to secret societies. He uncovers hidden messages in Leonardo da Vinci's works..."
     ));
 
     books.push(new Book(
@@ -349,7 +349,7 @@ function initBookArr(books) {
         465,
         465,
         "https://images.isbndb.com/covers/94/86/9780307949486.jpg",
-        "Journalist Mikael Blomkvist teams up with hacker Lisbeth Salander to investigate a decades-old disappearance. They uncover dark family secrets and corruption. The story is a gripping mystery with complex characters..."
+        "Journalist Mikael Blomkvist and hacker Lisbeth Salander investigate a disappearance. They uncover dark family secrets and corruption..."
     ));
 
     books.push(new Book(
@@ -361,7 +361,7 @@ function initBookArr(books) {
         374,
         0,
         "https://covers.openlibrary.org/b/isbn/9780439023481-L.jpg",
-        "In a dystopian future, Katniss Everdeen volunteers for a televised fight to the death. Representing her district, she must survive against other tributes. The novel explores themes of survival, sacrifice, and rebellion..."
+        "Katniss Everdeen volunteers for a televised fight to the death. She must survive against other tributes in a dystopian society..."
     ));
 
     books.push(new Book(
@@ -373,9 +373,10 @@ function initBookArr(books) {
         313,
         0,
         "https://covers.openlibrary.org/b/isbn/9780142424179-L.jpg",
-        "Teenagers Hazel Grace Lancaster and Augustus Waters meet at a cancer support group. Their shared experiences lead to a profound and heartfelt romance. Together, they navigate love and loss with humor and honesty..."
+        "Hazel and Augustus, both teenagers with cancer, fall in love. Together, they navigate love and loss with humor and honesty..."
     ));
 }
+
 
 initBookArr(books);
 
@@ -420,8 +421,9 @@ let statusToIconMap = {
 
 function displayBooks(bookArr) {
     displayReadingBooks(bookArr);
-    bookArr.forEach((book) => {
-        main.appendChild(fillBookCard(book));
+    bookArr.forEach((book, bookCounter) => {
+        console.log(bookCounter);
+        main.appendChild(fillBookCard(book, bookCounter));
     });
 }
 
@@ -436,8 +438,7 @@ function generateScrollBook() {
     pageLeft.classList.add("page-left");
     let actionDiv = document.createElement("div");
     actionDiv.classList.add("actions");
-    actionDiv.innerHTML = `<span class="status-toggle material-symbols-outlined" title='toggle read status'>auto_stories</span>
-                            <span class="delete-book material-symbols-outlined" title="remove book">delete</span>`;
+    actionDiv.innerHTML = `<span class="status-toggle material-symbols-outlined" title='toggle read status'>auto_stories</span>`;
     let bookName = document.createElement("p");
     bookName.setAttribute("style", "display: none");
     infoDiv.append(pageLeft, actionDiv, bookName);
@@ -459,12 +460,13 @@ function fillScrollBook(book) {
 }
 
 function displayReadingBooks(bookArr) {
-    bookArr.forEach(book => {
+    getReadingBooks(bookArr).forEach(book => {
         scrollBarWrap.append(fillScrollBook(book));
     });
 }
 
-function generateCard() {
+function generateCard(bookCounter) {
+    // generate elements
     let bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
 
@@ -480,30 +482,25 @@ function generateCard() {
     let summary = document.createElement("p");
     summary.classList.add("summary");
 
-    // Icons - status (expand on hover) | delete
     let icons = document.createElement("div");
-    icons.classList.add("interact-icon");
+    icons.classList.add("interact-icon", `book-${bookCounter}`);
 
     let readStatusIcon = document.createElement("div");
     readStatusIcon.classList.add("read-status-icons");
-    readStatusIcon.innerHTML = `<span class="material-symbols-outlined to-read">book_2</span><span class="material-symbols-outlined reading">auto_stories</span><span class="material-symbols-outlined check-circle">check_circle</span>`;
-    // console.log(readStatusIcon);
+    readStatusIcon.innerHTML = `<span class="material-symbols-outlined to-read" title="status: To Read">book_2</span><span class="material-symbols-outlined reading" title='status: Reading'>auto_stories</span><span class="material-symbols-outlined check-circle" title='status: Read'>check_circle</span>`;
+
     let deleteIcon = document.createElement("p");
     deleteIcon.classList.add("delete-icon");
-    deleteIcon.innerHTML = `<span class="material-symbols-outlined delete">delete_forever</span>`;
+    deleteIcon.innerHTML = `<span class="material-symbols-outlined delete" title="Delete">delete_forever</span>`;
 
     let coverImg = document.createElement("img");
     coverImg.classList.add("book-cover");
     coverImg.setAttribute("src", "");
 
+    // generate elements - ends
+
     // Append both icons to the icons container
     icons.append(readStatusIcon, deleteIcon);
-    // icons.textContent = "123";
-    // console.log(icons);
-    // textInfo.append(readStatusIcon);
-    // console.log(icons);
-    // console.log(textInfo);
-    // Build the card structure
     textInfo.append(title, author, summary, icons);
     bookCard.append(coverImg, textInfo);
 
@@ -512,8 +509,8 @@ function generateCard() {
 }
 
 
-function fillBookCard(book) { //returns the filled bookCard div
-    let bookCard = generateCard();
+function fillBookCard(book, bookCounter) { //returns the filled bookCard div
+    let bookCard = generateCard(bookCounter);
     
     for(let bookInfo of bookCard.childNodes) {
         let className = bookInfo.className;
@@ -624,5 +621,7 @@ function updateBook(title, status) {
     displayBooks(books);
     setStatusToggle();
 }
+
+
 
 setStatusToggle();
