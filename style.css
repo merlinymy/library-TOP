@@ -301,6 +301,64 @@ a:link {
     align-items: flex-end;
 }
 
+.text-info > .interact-icon {
+    margin-top: auto;
+    /*display: flex;
+    justify-content: end; */
+    /* align-self: center; */
+    width: 100%; 
+    position: relative;
+    /* align-items: center; */
+}
+
+.interact-icon > *{
+    display: flex;
+    gap: 0.45rem;
+    align-items: center;
+}
+
+.delete-icon {
+    margin-left: 0.65rem;
+}
+
+.highlight {
+    color: green;
+}
+
+.interact-icon .material-symbols-outlined {
+    position: absolute;
+    /* z-index: -1; */
+    right: 0px;
+    bottom: 0px;
+    transition: all 450ms;
+}
+
+.interact-icon .material-symbols-outlined:not(.highlight) {
+    color: transparent;
+}
+
+.book-card:hover .material-symbols-outlined:not(.highlight) {
+    color: #d3d3d3;
+}
+
+.book-card:hover .to-read {
+    right:50%;
+}
+
+.book-card:hover .reading {
+    right:35%;
+}
+
+.book-card:hover .check-circle {
+    right:20%;
+}
+
+.book-card:hover .delete-icon {
+    right:0%;
+}
+
+
+
 .text-info > .read-status {
     margin-top: auto;
     align-self: center;

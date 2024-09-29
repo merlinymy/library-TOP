@@ -378,6 +378,12 @@ let classToPropertyMap = {
     "book-cover": "coverImg",
 };
 
+let statusToIconMap = {
+    "To Read": 0,
+    "Reading": 1,
+    "Read" : 2,
+};
+
 function displayBooks(bookArr) {
     displayReadingBooks(bookArr);
     bookArr.forEach((book) => {
@@ -424,7 +430,7 @@ function displayReadingBooks(bookArr) {
     });
 }
 
-function generateCard() { //returns the empty bookCard div
+function generateCard() {
     let bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
 
@@ -437,24 +443,37 @@ function generateCard() { //returns the empty bookCard div
     let author = document.createElement("p");
     author.classList.add("author");
 
-    let status = document.createElement("p");
-    status.classList.add("read-status");
+    // Icons - status (expand on hover) | delete
+    let icons = document.createElement("div");
+    icons.classList.add("interact-icon");
 
-    // let dateStart = document.createElement("p");
-    // dateStart.classList.add("date-start");
-
-    // let dateFin = document.createElement("p");
-    // dateFin.classList.add("date-finished");
+    let readStatusIcon = document.createElement("div");
+    readStatusIcon.classList.add("read-status-icons");
+    readStatusIcon.innerHTML = `<span class="material-symbols-outlined to-read">book_2</span><span class="material-symbols-outlined reading">auto_stories</span><span class="material-symbols-outlined check-circle">check_circle</span>`;
+    // console.log(readStatusIcon);
+    let deleteIcon = document.createElement("p");
+    deleteIcon.classList.add("delete-icon");
+    deleteIcon.innerHTML = `<span class="material-symbols-outlined delete">delete_forever</span>`;
 
     let coverImg = document.createElement("img");
     coverImg.classList.add("book-cover");
     coverImg.setAttribute("src", "");
 
-    textInfo.append(title, author, status);
+    // Append both icons to the icons container
+    icons.append(readStatusIcon, deleteIcon);
+    // icons.textContent = "123";
+    // console.log(icons);
+    // textInfo.append(readStatusIcon);
+    // console.log(icons);
+    // console.log(textInfo);
+    // Build the card structure
+    textInfo.append(title, author, icons);
     bookCard.append(coverImg, textInfo);
 
+    // console.log(bookCard);
     return bookCard;
 }
+
 
 function fillBookCard(book) { //returns the filled bookCard div
     let bookCard = generateCard();
@@ -465,7 +484,13 @@ function fillBookCard(book) { //returns the filled bookCard div
             bookInfo.setAttribute("src", book[classToPropertyMap[className]]);
         } else {
             for(let textInfo of bookInfo.childNodes) {
-                textInfo.textContent = book[classToPropertyMap[textInfo.className]];
+                if (textInfo.className === "interact-icon") {
+                    // add highlight class to current reading status
+                    textInfo.childNodes[0].childNodes[statusToIconMap[book.status]].classList.add("highlight");
+                }
+                if (textInfo.className !== "interact-icon") {
+                    textInfo.textContent = book[classToPropertyMap[textInfo.className]];
+                }
             }
             
         }
@@ -534,6 +559,7 @@ function setStatusToggle() {
         toggle.addEventListener('click', () => {
         console.log('status toggled');
         let symbol = toggle.textContent;
+        // TODO: the order in this array should be the same as readingBooks[]
         let bookName = toggle.parentElement.parentElement.childNodes[2].textContent;
         // console.log(toggleParent);
         // find the book from reading array
