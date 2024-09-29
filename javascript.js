@@ -8,6 +8,10 @@ function Book(title, author, status, dateStart, dateFin, totalPage, pageLeft, co
     this.pageLeft = pageLeft;
     this.coverImg = coverImg;
     this.summary = summary;
+
+    this.updateStatus = function (newStatus) {
+        this.status = newStatus;
+    }
 }
 
 let books = []; // last add, first in array
@@ -419,10 +423,13 @@ let statusToIconMap = {
     "Read" : 2,
 };
 
+displayBooks(books);
+
 function displayBooks(bookArr) {
+    console.log("in displayBooks()")
     displayReadingBooks(bookArr);
     bookArr.forEach((book, bookCounter) => {
-        console.log(bookCounter);
+        // console.log(bookCounter);
         main.appendChild(fillBookCard(book, bookCounter));
     });
 }
@@ -502,8 +509,8 @@ function generateCard(bookCounter) {
 
     // Append both icons to the icons container
     icons.append(readStatusIcon, deleteIcon);
-    console.log(readStatusIcon);
-    console.log(icons);
+    // console.log(readStatusIcon);
+    // console.log(icons);
     textInfo.append(title, author, summary, icons);
     bookCard.append(coverImg, textInfo);
 
@@ -524,16 +531,16 @@ function fillBookCard(book, bookCounter) { //returns the filled bookCard div
         } else {
             for(let textInfo of bookInfo.childNodes) {
                 let interactIconClsName = textInfo.className.split(" ")[0];
-                console.log(textInfo.className.split(" ")[0]);
+                // console.log(textInfo.className.split(" ")[0]);
                 if (interactIconClsName === "interact-icon") {
                     // add highlight class to current reading status
+                    // console.log(textInfo.childNodes[0].childNodes[statusToIconMap[book.status]])
                     textInfo.childNodes[0].childNodes[statusToIconMap[book.status]].classList.add("highlight");
                 }
                 if (interactIconClsName !== "interact-icon") {
                     textInfo.textContent = book[classToPropertyMap[textInfo.className]];
                 }
-            }
-            
+            }   
         }
     }
     return bookCard;
@@ -543,15 +550,38 @@ function addBook() {
 
 }
 
-function updateBookStatus(htmlBookNum) {
+function updateBookStatus(htmlBookNum, newStatus) {
     // param - "book-0" "book-1" ...
     htmlBookNum = htmlBookNum.slice(-1);
-    console.log(htmlBookNum);
+    books[+htmlBookNum].updateStatus(newStatus);
+    scrollBarWrap.innerHTML = '';
+    main.innerHTML = '';
+    rerender();
+}
+
+function rerender() {
+    displayBooks(books);
+    setStatusToggle();
+    setToReadBtn();
 }
 
 
 
-displayBooks(books);
+function setToReadBtn() {
+    let toReadBtm = document.querySelectorAll(".to-read");
+    // console.log(toReadBtm);
+    toReadBtm.forEach(btn => {
+        btn.addEventListener("click", () => {
+            console.log(btn.parentNode.parentElement.classList[1]);
+            let htmlBookNum = btn.parentNode.parentElement.classList[1];
+            // console.log(htmlBookNum.toString());
+            updateBookStatus(htmlBookNum, "To Read");
+            displayBooks(books);
+        })
+    });  
+}
+
+setToReadBtn();
 
 let themeIcon = document.querySelector(".theme-icon");
 let body = document.documentElement;
@@ -574,12 +604,12 @@ leftScrollBtn.addEventListener("click", (event) => {
     event.preventDefault();
     // console.log(readingBookLength - 6);
     x--;
-    console.log(x);
+    // console.log(x);
     if (x < 0) {
         x = readingBookLength - 6;
     }
     scrollBar.style.setProperty('--offset',`calc(-200px * ${x})`);
-    console.log(scrollBar.style);
+
 
 })
 
@@ -587,7 +617,7 @@ rightScrollBtn.addEventListener("click", (event) => {
     event.preventDefault();
     // console.log(readingBookLength);
     x++;
-    console.log(x);
+    // console.log(x);
     if (x > readingBookLength - 6) {
         x = 0;
     }
@@ -606,7 +636,7 @@ function setStatusToggle() {
     let readStatusToggle = document.querySelectorAll('.status-toggle');
     readStatusToggle.forEach(toggle => {
         toggle.addEventListener('click', () => {
-        console.log('status toggled');
+        // console.log('status toggled');
         let symbol = toggle.textContent;
         // TODO: the order in this array should be the same as readingBooks[]
         let bookName = toggle.parentElement.parentElement.childNodes[2].textContent;
@@ -635,8 +665,7 @@ function updateBookScroll(title, status) {
 
     scrollBarWrap.innerHTML = '';
     main.innerHTML = '';
-    displayBooks(books);
-    setStatusToggle();
+    rerender();
 }
 
 
