@@ -289,7 +289,8 @@ a:link {
 }
 
 .book-cover {
-    width: 110px;
+    width: 40%;
+    object-fit: contain;
     flex: 1;
 }
 
@@ -337,20 +338,24 @@ a:link {
     color: transparent;
 }
 
+.summary {
+    opacity: 0;
+}
+
 .book-card:hover .material-symbols-outlined:not(.highlight) {
     color: #d3d3d3;
 }
 
 .book-card:hover .to-read {
-    right:50%;
+    right:47%;
 }
 
 .book-card:hover .reading {
-    right:35%;
+    right:32%;
 }
 
 .book-card:hover .check-circle {
-    right:20%;
+    right:17%;
 }
 
 .book-card:hover .delete-icon {
