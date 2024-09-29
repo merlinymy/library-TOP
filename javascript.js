@@ -484,6 +484,7 @@ function generateCard(bookCounter) {
 
     let icons = document.createElement("div");
     icons.classList.add("interact-icon", `book-${bookCounter}`);
+    // icons.classList.add("book-0");
 
     let readStatusIcon = document.createElement("div");
     readStatusIcon.classList.add("read-status-icons");
@@ -501,6 +502,8 @@ function generateCard(bookCounter) {
 
     // Append both icons to the icons container
     icons.append(readStatusIcon, deleteIcon);
+    console.log(readStatusIcon);
+    console.log(icons);
     textInfo.append(title, author, summary, icons);
     bookCard.append(coverImg, textInfo);
 
@@ -510,19 +513,23 @@ function generateCard(bookCounter) {
 
 
 function fillBookCard(book, bookCounter) { //returns the filled bookCard div
+    // for each bookcard div, fill in info of the book
+    // the book is tracked by 'bookCount' param
     let bookCard = generateCard(bookCounter);
-    
     for(let bookInfo of bookCard.childNodes) {
         let className = bookInfo.className;
+
         if (className === "book-cover") {
             bookInfo.setAttribute("src", book[classToPropertyMap[className]]);
         } else {
             for(let textInfo of bookInfo.childNodes) {
-                if (textInfo.className === "interact-icon") {
+                let interactIconClsName = textInfo.className.split(" ")[0];
+                console.log(textInfo.className.split(" ")[0]);
+                if (interactIconClsName === "interact-icon") {
                     // add highlight class to current reading status
                     textInfo.childNodes[0].childNodes[statusToIconMap[book.status]].classList.add("highlight");
                 }
-                if (textInfo.className !== "interact-icon") {
+                if (interactIconClsName !== "interact-icon") {
                     textInfo.textContent = book[classToPropertyMap[textInfo.className]];
                 }
             }
@@ -535,6 +542,14 @@ function fillBookCard(book, bookCounter) { //returns the filled bookCard div
 function addBook() {
 
 }
+
+function updateBookStatus(htmlBookNum) {
+    // param - "book-0" "book-1" ...
+    htmlBookNum = htmlBookNum.slice(-1);
+    console.log(htmlBookNum);
+}
+
+
 
 displayBooks(books);
 
@@ -585,6 +600,8 @@ addNewBook.addEventListener("click", () => {
     addBookDialog.showModal();
 });
 
+
+// status toggle functions for scrolling part only
 function setStatusToggle() {
     let readStatusToggle = document.querySelectorAll('.status-toggle');
     readStatusToggle.forEach(toggle => {
@@ -595,14 +612,14 @@ function setStatusToggle() {
         let bookName = toggle.parentElement.parentElement.childNodes[2].textContent;
         // console.log(toggleParent);
         // find the book from reading array
-        updateBook(bookName, 'Read');
+        updateBookScroll(bookName, 'Read');
         // console.log(symbol);
         toggle.textContent = symbol == 'auto_stories' ? 'check_circle' : 'auto_stories';
     })});
 }
 
 
-function updateBook(title, status) {
+function updateBookScroll(title, status) {
     // TODO: use book id instead of name (potential duplicates)
     let book = books.filter(book => {
         return book.title === title;
