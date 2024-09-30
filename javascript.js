@@ -384,15 +384,19 @@ function initBookArr(books) {
 
 initBookArr(books);
 
-function getReadingBooks() {
-    return books.filter((book) => {
-        return book.status === 'Reading';
-    });
-    // console.log(reading);
+function getReadingBooks(booksArr) {
+    // returns a map, key = book name, value = book object
+    // TODO: use ISBN
+    let readingBookMap = new Map();
+    let a = booksArr.filter(book => {
+        return book.status === "Reading";
+    }).reduce((acc, curr) => {
+       acc.set(curr.title, curr);
+       return acc;
+    }, readingBookMap);
+    return a;
 }
-
-let readingBooks = getReadingBooks();
-
+let readingBooks = getReadingBooks(books);
 // console.log(readingBooks);
 let readingBookLength = readingBooks.length;
 
@@ -426,8 +430,8 @@ let statusToIconMap = {
 displayBooks(books);
 
 function displayBooks(bookArr) {
-    console.log("in displayBooks()")
-    displayReadingBooks(bookArr);
+    // console.log("in displayBooks(), ")
+    displayReadingBooks(readingBooks);
     bookArr.forEach((book, bookCounter) => {
         // console.log(bookCounter);
         main.appendChild(fillBookCard(book, bookCounter));
@@ -466,9 +470,9 @@ function fillScrollBook(book) {
     return bookDiv;
 }
 
-function displayReadingBooks(bookArr) {
-    getReadingBooks(bookArr).forEach(book => {
-        scrollBarWrap.append(fillScrollBook(book));
+function displayReadingBooks(bookMap) {
+    bookMap.forEach((value,_) => {
+        scrollBarWrap.append(fillScrollBook(value));
     });
 }
 
@@ -552,10 +556,12 @@ function addBook() {
 
 function updateBookStatus(htmlBookNum, newStatus) {
     // param - "book-0" "book-1" ...
-    htmlBookNum = htmlBookNum.slice(-1);
+    htmlBookNum = htmlBookNum.split("-")[1];
+
     books[+htmlBookNum].updateStatus(newStatus);
     scrollBarWrap.innerHTML = '';
     main.innerHTML = '';
+    // console.log(books[+htmlBookNum]);
     rerender();
 }
 
@@ -563,6 +569,9 @@ function rerender() {
     displayBooks(books);
     setStatusToggle();
     setToReadBtn();
+    setReadingBtn();
+    setReadBtn();
+    setDeleteBtn();
 }
 
 
@@ -572,16 +581,70 @@ function setToReadBtn() {
     // console.log(toReadBtm);
     toReadBtm.forEach(btn => {
         btn.addEventListener("click", () => {
-            console.log(btn.parentNode.parentElement.classList[1]);
+            // console.log(btn.parentNode.parentElement.classList[1]);
             let htmlBookNum = btn.parentNode.parentElement.classList[1];
-            // console.log(htmlBookNum.toString());
+            let htmlBookName = btn.parentNode.parentElement.parentElement.childNodes[0].textContent;
+            readingBooks.delete(htmlBookName);
             updateBookStatus(htmlBookNum, "To Read");
-            displayBooks(books);
         })
     });  
 }
 
+function setReadingBtn() {
+    let toReadBtm = document.querySelectorAll(".reading");
+    // console.log(toReadBtm);
+    toReadBtm.forEach(btn => {
+        btn.addEventListener("click", () => {
+            
+            let htmlBookNum = btn.parentNode.parentElement.classList[1];
+            let htmlBookName = btn.parentNode.parentElement.parentElement.childNodes[0].textContent;
+            // console.log(htmlBookNum)
+            readingBooks.set(htmlBookName, books[htmlBookNum.split("-")[1]]);
+            updateBookStatus(htmlBookNum, "Reading");
+            // displayBooks(books);
+        })
+    });  
+}
+
+function setReadBtn() {
+    let toReadBtm = document.querySelectorAll(".check-circle");
+    // console.log(toReadBtm);
+    toReadBtm.forEach(btn => {
+        btn.addEventListener("click", () => {
+            console.log(btn.parentNode.parentElement.classList[1]);
+            let htmlBookNum = btn.parentNode.parentElement.classList[1];
+            let htmlBookName = btn.parentNode.parentElement.parentElement.childNodes[0].textContent;
+            readingBooks.delete(htmlBookName);
+            updateBookStatus(htmlBookNum, "Read");
+            
+            // update reading book array
+
+        })
+    });  
+}
+
+function setDeleteBtn() {
+    let toReadBtm = document.querySelectorAll(".delete");
+    toReadBtm.forEach(btn => {
+        btn.addEventListener("click", () => {
+            let htmlBookNum = btn.parentNode.parentElement.classList[1].split("-")[1];
+            let htmlBookName = btn.parentNode.parentElement.parentElement.childNodes[0].textContent;
+            readingBooks.delete(htmlBookName);
+            books.splice(htmlBookNum, 1);
+            scrollBarWrap.innerHTML = '';
+            main.innerHTML = '';
+            // console.log(books[+htmlBookNum]);
+            rerender();
+        })
+    });  
+}
+
+
+
 setToReadBtn();
+setReadingBtn();
+setReadBtn();
+setDeleteBtn();
 
 let themeIcon = document.querySelector(".theme-icon");
 let body = document.documentElement;
@@ -636,7 +699,6 @@ function setStatusToggle() {
     let readStatusToggle = document.querySelectorAll('.status-toggle');
     readStatusToggle.forEach(toggle => {
         toggle.addEventListener('click', () => {
-        // console.log('status toggled');
         let symbol = toggle.textContent;
         // TODO: the order in this array should be the same as readingBooks[]
         let bookName = toggle.parentElement.parentElement.childNodes[2].textContent;
@@ -650,19 +712,11 @@ function setStatusToggle() {
 
 
 function updateBookScroll(title, status) {
-    // TODO: use book id instead of name (potential duplicates)
+    readingBooks.delete(title);
     let book = books.filter(book => {
         return book.title === title;
     })[0];
-
-    if (status === 'Read') {
-        book.status = 'Read';
-    } else if (status === 'Reading') {
-        book.status = 'Reading';
-    } else {
-        book.status = 'Dropped';
-    }
-
+    book.status = status;
     scrollBarWrap.innerHTML = '';
     main.innerHTML = '';
     rerender();
