@@ -493,13 +493,13 @@ select {
     height: 2rem;
 }
 
-button.submit-button {
+button.submit-button, button.cancel-button {
     font-size: 1.15rem;
     /* padding: 0.75rem 2rem; */
     width: fit-content;
 }
 
-.submit-wrapper {
+.submit-wrapper, .cancel-wrapper {
     background-color: var(--color-input-background);
     border: 3px solid var(--color-input-background);
     border-radius: 5px;
@@ -507,9 +507,13 @@ button.submit-button {
     padding: 0.75rem 2rem;;
 }
 
-.submit-wrapper:hover {
+.submit-wrapper:hover, .cancel-wrapper:hover {
     border: 3px solid var(--color-input-border);
     /* transition: all 100ms; */
+}
+
+.buttons {
+    margin-left: auto;
 }
 
 
