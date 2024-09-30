@@ -94,7 +94,65 @@
         </div>
         
         <dialog class="add-book">
-            <form method="dialog">
+            <h1 class="form-title">Add a New Book</h1>
+            <form class="book-form" id="bookForm" method="post">
+                <!-- Title -->
+                <div class="title-author">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" class="input-field" required>
+                    </div>
+                    <!-- Author -->
+                    <div class="form-group">
+                        <label for="author">Author</label>
+                        <input type="text" id="author" name="author" class="input-field" required>
+                    </div>
+                </div>
+
+                <div class="page-info">
+                    <!-- Total Pages -->
+                    <div class="form-group">
+                        <label for="totalPage">Total Pages</label>
+                        <input type="number" id="totalPage" name="totalPage" class="input-field" min="1" required>
+                    </div>
+                    <!-- Pages Left -->
+                    <div class="form-group">
+                        <label for="pageLeft">Pages Left</label>
+                        <input type="number" id="pageLeft" name="pageLeft" class="input-field" min="0">
+                    </div>
+                </div>
+
+                <!-- Cover Image - URL or Upload -->
+                <div class="form-group">
+                    <label for="coverImgUrl">Cover Image URL</label>
+                    <input type="url" id="coverImgUrl" name="coverImgUrl" class="input-field" placeholder="Enter image URL">
+                </div>
+
+                <div class="form-group">
+                    <label for="coverImgFile"><i>or</i> Upload Cover Image</label>
+                    <input type="file" id="coverImgFile" name="coverImgFile" accept="image/*" class="file-input-field">
+                </div>
+                <!-- Summary -->
+                <div class="form-group">
+                    <label for="summary">Summary</label>
+                    <textarea id="summary" name="summary" class="textarea-field" rows="4"></textarea>
+                </div>
+
+                <!-- Status -->
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" name="status" class="select-field" required>
+                        <option value="Not Started">Not Started</option>
+                        <option value="Reading">Reading</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                <!-- Submit Button -->
+                <div class="form-group submit-wrapper">
+                    <button type="submit" class="submit-button">Submit</button>
+                </div>
+            </form>
+            <!-- <form method="dialog">
                 <h2>Add A New Book:</h2>
                 <label for="book-name">Book Name</label>
                 <input type="text" name="book-name" id="book-name">
@@ -102,7 +160,7 @@
                 <input type="text" name="author" id="book-author">
                 <label for="genre">Genres</label>
                 <input type="text" name="genre" id="genre">
-            </form>    
+            </form>     -->
         </dialog>
         <div class="footer">Copyright <span>&copy;</span> Merlin Yang</div>
     </div>

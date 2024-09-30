@@ -397,9 +397,8 @@ function getReadingBooks(booksArr) {
     return a;
 }
 let readingBooks = getReadingBooks(books);
-// console.log(readingBooks);
-let readingBookLength = readingBooks.length;
 
+let readingBookLength = readingBooks.size;
 
 
 let main = document.querySelector(".latest-updates");
@@ -407,7 +406,7 @@ let scrollBarWrap = document.querySelector(".scroll-bar-wrap");
 let leftScrollBtn = document.querySelector(".left-scroll");
 let rightScrollBtn = document.querySelector(".right-scroll");
 let scrollBar = document.querySelector(".scroll-bar-wrap");
-let x = 0;
+let scrollClickCount = 0;
 
 let classToPropertyMap = {
     "title": "title",
@@ -472,7 +471,7 @@ function fillScrollBook(book) {
 
 function displayReadingBooks(bookMap) {
     bookMap.forEach((value,_) => {
-        scrollBarWrap.append(fillScrollBook(value));
+        scrollBarWrap.prepend(fillScrollBook(value));
     });
 }
 
@@ -666,12 +665,12 @@ themeIcon.addEventListener("click", () => {
 leftScrollBtn.addEventListener("click", (event) => {
     event.preventDefault();
     // console.log(readingBookLength - 6);
-    x--;
+    scrollClickCount--;
     // console.log(x);
-    if (x < 0) {
-        x = readingBookLength - 6;
+    if (scrollClickCount < 0) {
+        scrollClickCount = readingBookLength - 6;
     }
-    scrollBar.style.setProperty('--offset',`calc(-200px * ${x})`);
+    scrollBar.style.setProperty('--offset',`calc(-200px * ${scrollClickCount})`);
 
 
 })
@@ -679,12 +678,12 @@ leftScrollBtn.addEventListener("click", (event) => {
 rightScrollBtn.addEventListener("click", (event) => {
     event.preventDefault();
     // console.log(readingBookLength);
-    x++;
+    scrollClickCount++;
     // console.log(x);
-    if (x > readingBookLength - 6) {
-        x = 0;
+    if (scrollClickCount > readingBookLength - 6) {
+        scrollClickCount = 0;
     }
-    scrollBar.style.setProperty('--offset',`calc(-200px * ${x})`);
+    scrollBar.style.setProperty('--offset',`calc(-200px * ${scrollClickCount})`);
 })
 
 let addNewBook = document.querySelector('.add-new-book');
