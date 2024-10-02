@@ -432,7 +432,7 @@ function displayBooks(bookArr) {
     displayReadingBooks(readingBooks);
     bookArr.forEach((book, bookCounter) => {
         // console.log(bookCounter);
-        main.appendChild(fillBookCard(book, bookCounter));
+        main.prepend(fillBookCard(book, bookCounter));
     });
 }
 
@@ -735,6 +735,13 @@ addNewBook.addEventListener("click", () => {
 
 let submitBtn = document.querySelector(".submit-wrapper");
 let cancelBtn = document.querySelector(".cancel-wrapper");
+let resetBtn = document.querySelector(".reset-wrapper");
+
+resetBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    let form = document.querySelector(".book-form");
+    form.reset();
+})
 
 cancelBtn.addEventListener("click", (event) => {
     event.preventDefault();
@@ -823,6 +830,7 @@ submitBtn.addEventListener("click", (event) => {
         successMsgDiv.classList.add("success-msg-show");
         console.log(title.value);
         addBook();
+        
         addBookDialog.close();
 
         setTimeout(() => {
@@ -840,7 +848,7 @@ function addBook() {
                             totalPage.ele.value, pageLeft.ele.value, 
                             coverUrl.ele.value, summary.ele.value);
     console.log(newBook);
-    books.unshift(newBook);
+    books.push(newBook);
     console.log(books);
     if (bookStatus.ele.value === "Reading") {
         readingBooks = getReadingBooks(books);
