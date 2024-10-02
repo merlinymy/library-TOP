@@ -699,7 +699,6 @@ function setStatusToggle() {
     readStatusToggle.forEach(toggle => {
         toggle.addEventListener('click', () => {
         let symbol = toggle.textContent;
-        // TODO: the order in this array should be the same as readingBooks[]
         let bookName = toggle.parentElement.parentElement.childNodes[2].textContent;
         // console.log(toggleParent);
         // find the book from reading array
