@@ -15,8 +15,7 @@ function Book(title, author, status, dateStart, dateFin, totalPage, pageLeft, co
 }
 
 let books = []; // last add, first in array
-let readBooks = [];
-let toReadBooks = [];
+
 
 function initBookArr(books) {
 
@@ -537,7 +536,7 @@ function fillBookCard(book, bookCounter) { //returns the filled bookCard div
                 // console.log(textInfo.className.split(" ")[0]);
                 if (interactIconClsName === "interact-icon") {
                     // add highlight class to current reading status
-                    // console.log(textInfo.childNodes[0].childNodes[statusToIconMap[book.status]])
+                    console.log(book.status);
                     textInfo.childNodes[0].childNodes[statusToIconMap[book.status]].classList.add("highlight");
                 }
                 if (interactIconClsName !== "interact-icon") {
@@ -547,10 +546,6 @@ function fillBookCard(book, bookCounter) { //returns the filled bookCard div
         }
     }
     return bookCard;
-}
-
-function addBook() {
-
 }
 
 function updateBookStatus(htmlBookNum, newStatus) {
@@ -565,6 +560,8 @@ function updateBookStatus(htmlBookNum, newStatus) {
 }
 
 function rerender() {
+    scrollBarWrap.innerHTML = '';
+    main.innerHTML = '';
     displayBooks(books);
     setStatusToggle();
     setToReadBtn();
@@ -816,7 +813,6 @@ submitBtn.addEventListener("click", (event) => {
     let errorMsgDiv = document.querySelector(".error-msg");
     let successMsgDiv = document.querySelector(".success-msg");
     let isFormGood = checkInputs(formElements);
-    console.log(isFormGood);
     if (isFormGood.length > 0) {
         console.log("is not good")
         errorMsgDiv.classList.remove("msg-hidden");
@@ -825,7 +821,10 @@ submitBtn.addEventListener("click", (event) => {
         console.log("in success")
         successMsgDiv.classList.remove("msg-hidden");
         successMsgDiv.classList.add("success-msg-show");
+        console.log(title.value);
+        addBook();
         addBookDialog.close();
+
         setTimeout(() => {
             successMsgDiv.classList.add("msg-hidden");
             successMsgDiv.classList.remove("success-msg-show");
@@ -833,6 +832,21 @@ submitBtn.addEventListener("click", (event) => {
     }
 
 });
+
+
+function addBook() {
+    let newBook = new Book(title.ele.value, author.ele.value, 
+                            bookStatus.ele.value, null, null, 
+                            totalPage.ele.value, pageLeft.ele.value, 
+                            coverUrl.ele.value, summary.ele.value);
+    console.log(newBook);
+    books.unshift(newBook);
+    console.log(books);
+    if (bookStatus.ele.value === "Reading") {
+        readingBooks = getReadingBooks(books);
+    }
+    rerender();
+}
 
 function checkInputs(eleArray) {
     let res = eleArray.filter(ele => {
