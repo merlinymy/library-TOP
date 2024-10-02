@@ -398,7 +398,7 @@ function getReadingBooks(booksArr) {
 }
 let readingBooks = getReadingBooks(books);
 
-let readingBookLength = readingBooks.size;
+// let readingBookLength = readingBooks.size;
 
 
 let main = document.querySelector(".latest-updates");
@@ -573,8 +573,6 @@ function rerender() {
     setDeleteBtn();
 }
 
-
-
 function setToReadBtn() {
     let toReadBtm = document.querySelectorAll(".to-read");
     // console.log(toReadBtm);
@@ -597,10 +595,13 @@ function setReadingBtn() {
             
             let htmlBookNum = btn.parentNode.parentElement.classList[1];
             let htmlBookName = btn.parentNode.parentElement.parentElement.childNodes[0].textContent;
-            // console.log(htmlBookNum)
+            
+            // add book to the begining of the scroll bar
+            scrollBar.style.setProperty('--offset',`calc(-200px * 0)`);
+            scrollClickCount = 0
+            
             readingBooks.set(htmlBookName, books[htmlBookNum.split("-")[1]]);
             updateBookStatus(htmlBookNum, "Reading");
-            // displayBooks(books);
         })
     });  
 }
@@ -644,6 +645,9 @@ setToReadBtn();
 setReadingBtn();
 setReadBtn();
 setDeleteBtn();
+setStatusToggle();
+
+// theme toggle start
 
 let themeIcon = document.querySelector(".theme-icon");
 let body = document.documentElement;
@@ -662,7 +666,12 @@ themeIcon.addEventListener("click", () => {
     iconType.textContent = iconName === "light_mode" ? "dark_mode" : "light_mode";
 })
 
+// theme toggle ends
+
+// scroll bar start
+
 leftScrollBtn.addEventListener("click", (event) => {
+    let readingBookLength = readingBooks.size;
     event.preventDefault();
     // console.log(readingBookLength - 6);
     scrollClickCount--;
@@ -676,6 +685,7 @@ leftScrollBtn.addEventListener("click", (event) => {
 })
 
 rightScrollBtn.addEventListener("click", (event) => {
+    let readingBookLength = readingBooks.size;
     event.preventDefault();
     // console.log(readingBookLength);
     scrollClickCount++;
@@ -685,13 +695,6 @@ rightScrollBtn.addEventListener("click", (event) => {
     }
     scrollBar.style.setProperty('--offset',`calc(-200px * ${scrollClickCount})`);
 })
-
-let addNewBook = document.querySelector('.add-new-book');
-let addBookDialog = document.querySelector('.add-book');
-addNewBook.addEventListener("click", () => {
-    addBookDialog.showModal();
-});
-
 
 // status toggle functions for scrolling part only
 function setStatusToggle() {
@@ -704,7 +707,7 @@ function setStatusToggle() {
         // console.log(toggleParent);
         // find the book from reading array
         updateBookScroll(bookName, 'Read');
-        // console.log(symbol);
+        // console.log(readingBookLength);
         toggle.textContent = symbol == 'auto_stories' ? 'check_circle' : 'auto_stories';
     })});
 }
@@ -721,6 +724,121 @@ function updateBookScroll(title, status) {
     rerender();
 }
 
+// scroll bar ends
 
 
-setStatusToggle();
+
+// add new book start
+
+let addNewBook = document.querySelector('.add-new-book');
+let addBookDialog = document.querySelector('.add-book');
+addNewBook.addEventListener("click", () => {
+    addBookDialog.showModal();
+});
+
+let submitBtn = document.querySelector(".submit-wrapper");
+let cancelBtn = document.querySelector(".cancel-wrapper");
+
+cancelBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    addBookDialog.close();
+    let errorMsgDiv = document.querySelector(".error-msg");
+    errorMsgDiv.classList.remove("msg-show");
+    errorMsgDiv.classList.add("msg-hidden");
+
+});
+
+let title = {ele: document.querySelector("#title"),
+    isValid: false,
+};
+let author = {ele: document.querySelector("#author"),
+    isValid: false,
+};
+let totalPage = {ele: document.querySelector("#totalPage"),
+    isValid: false,
+};
+let pageLeft = {ele: document.querySelector("#pageLeft"),
+    isValid: false,
+};
+let coverUrl = {ele: document.querySelector("#coverImgUrl"),
+    isValid: false,
+};
+let summary = {ele: document.querySelector("#summary"),
+    isValid: false,
+};
+let bookStatus = {ele: document.querySelector("#status"),
+    isValid: false,
+};
+
+let formElements = [title, author, totalPage, pageLeft, coverUrl, summary, bookStatus];
+let isFormValid = false;
+
+formElements.forEach((input) => {
+    let ele = input.ele;
+
+    ele.addEventListener("blur", (event) => {
+        event.preventDefault();
+        if (ele.value === "") {
+            ele.setAttribute("style", "border: 2px solid var(--color-error);");
+            // ele.classList.add("input-error");
+            input.isValid = false;
+        } else {
+            ele.toggleAttribute("style");
+            input.isValid = true;
+        }
+
+        if (ele.id === "coverImgUrl") {
+            if (!isValidUrl(ele.value)) {
+                ele.setAttribute("style", "border: 2px solid var(--color-error);");
+                input.isValid = false;
+            } else {
+                ele.toggleAttribute("style");
+                input.isValid = true;
+            }
+        }        
+    })
+});
+
+// url check from: https://freecodecamp.org/news/check-if-a-javascript-string-is-a-url/
+
+const isValidUrl = urlString=> {
+    var urlPattern = new RegExp('^(https?:\\/\\/)?'+ // validate protocol
+  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // validate domain name
+  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // validate OR ip (v4) address
+  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // validate port and path
+  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // validate query string
+  '(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
+return !!urlPattern.test(urlString);
+}
+
+submitBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    let errorMsgDiv = document.querySelector(".error-msg");
+    let successMsgDiv = document.querySelector(".success-msg");
+    let isFormGood = checkInputs(formElements);
+    console.log(isFormGood);
+    if (isFormGood.length > 0) {
+        console.log("is not good")
+        errorMsgDiv.classList.remove("msg-hidden");
+        errorMsgDiv.classList.add("msg-show");
+    } else {
+        console.log("in success")
+        successMsgDiv.classList.remove("msg-hidden");
+        successMsgDiv.classList.add("success-msg-show");
+        addBookDialog.close();
+        setTimeout(() => {
+            successMsgDiv.classList.add("msg-hidden");
+            successMsgDiv.classList.remove("success-msg-show");
+        }, 1250);
+    }
+
+});
+
+function checkInputs(eleArray) {
+    let res = eleArray.filter(ele => {
+        return ele.isValid === false;
+    });
+    return res;
+}
+
+// add new book ends

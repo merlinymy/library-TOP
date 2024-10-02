@@ -12,10 +12,12 @@
     --transparency4: 0.85;
     --color-rainbow: linear-gradient(45deg in lch, rgba(255, 0, 0, var(--transparency)), rgba(255, 165, var(--transparency)), rgba(248, 248, 26, var(--transparency)), rgba(0, 128, 0, var(--transparency)), rgba(173, 216, 230, var(--transparency)), rgba(0, 0, 255, var(--transparency)), rgba(128, 0, 128, var(--transparency)));
     --color-prime: rgb(53, 140, 255);
+    --color-error:rgb(161, 1, 1);
 }
 
 :root.light {
-    /* Light Mode Colors */
+    --color-reading-tag:rgb(0, 185, 9);
+    --color-all-books-tag:rgb(0, 153, 255);
     --color-text: #000000;             /* Black text */
     --color-background: #000000;   
     --color-input: #d3d3d3; /* White background */
@@ -31,19 +33,20 @@
 }
 
 :root.dark {
-       /* Dark Mode Colors */
-       --color-text: #e1e1e1;              /* White text */
-       --color-input: #424242;
-       --color-background: #121212;        /* Dark background */
-       --color-nav-background: #272727;    /* Darker nav background */
-       --color-footer-background: #1A1A1A; /* Darker footer background */
-       --color-main-background: #1e1e1e;   /* Dark main background */
-       --color-card-background: #303030;   /* Dark card background */
-       --color-func-header-row-2:#45475c;
-       --color-dialog-background: #1f1f1f;    /* Dark grey dialog background */
-       --color-input-background: #2b2b2b;     /* Slightly lighter dark input box background */
-       --color-input-border: #444444;         /* Dark grey border for input */
-       --color-dialog-backdrop: rgba(0, 0, 0, 0.7);  /* Darker semi-transparent backdrop */   
+    --color-reading-tag:rgb(4, 125, 10);
+    --color-all-books-tag:rgb(0, 102, 169);
+    --color-text: #e1e1e1;              /* White text */
+    --color-input: #424242;
+    --color-background: #121212;        /* Dark background */
+    --color-nav-background: #272727;    /* Darker nav background */
+    --color-footer-background: #1A1A1A; /* Darker footer background */
+    --color-main-background: #1e1e1e;   /* Dark main background */
+    --color-card-background: #303030;   /* Dark card background */
+    --color-func-header-row-2:#45475c;
+    --color-dialog-background: #1f1f1f;    /* Dark grey dialog background */
+    --color-input-background: #2b2b2b;     /* Slightly lighter dark input box background */
+    --color-input-border: #444444;         /* Dark grey border for input */
+    --color-dialog-backdrop: rgba(0, 0, 0, 0.7);  /* Darker semi-transparent backdrop */   
 }
 
 
@@ -158,7 +161,7 @@ a:link {
 }
 
 .top-week {
-    border-top: 3px solid rgb(81, 255, 0);;
+    border-top: 3px solid var(--color-reading-tag);
     border-radius: 3px 0px 0px 0px;
     margin-bottom: 1rem;
 }
@@ -256,7 +259,7 @@ a:link {
 
 .top-week>h2 {
     border-radius: 0px 0px 0px 3px;
-    background-color: rgb(81, 255, 0);
+    background-color: var(--color-reading-tag);
     display: inline-block;
     padding: 0.15rem 1rem;
 }
@@ -272,12 +275,12 @@ a:link {
 .main {
     flex: 2 1 auto;
     border-radius: 3px 0px 0px 0px;
-    border-top: 3px solid rgb(0, 217, 255);
+    border-top: 3px solid var(--color-all-books-tag);
 }
 
 .main>h2 {
     border-radius: 0px 0px 0px 3px;
-    background-color: rgb(0, 217, 255);
+    background-color: var(--color-all-books-tag);
     display: inline-block;
     padding: 0.15rem 1rem;
     margin-bottom: 0.5rem;
@@ -478,10 +481,43 @@ textarea {
     border: 2px solid var(--color-prime);
 }
 
+.input-error {
+    border: 2px solid var(--color-error);
+}
+
 .book-form > div {
     display: flex;
     justify-content: start;
     gap: 0.35rem;
+}
+
+.msg-hidden {
+    visibility: hidden;
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+}
+
+.msg-show {
+    color: var(--color-error);
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    animation: shake 0.5s ease-in-out;
+}
+
+.success-msg-show {
+    position: absolute;
+    padding: 1.25rem 3rem;
+    font-size: 2rem;
+    background: #000000;
+    border: 3px solid white;
+    border-radius: 5px;
+    height: fit-content;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(1, 98, 1);
 }
 
 ::backdrop {
@@ -517,4 +553,8 @@ button.submit-button, button.cancel-button {
 }
 
 
-
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+  }
